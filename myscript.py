@@ -7,7 +7,7 @@ good_commit = "e4cfc6f77ebbe2e23550ddab682316ab4ce1c03c"
 bad_commit = "c1a4be04b972b6c17db242fc37752ad517c29402"
 
 # installer les dépendances puis lancer les tests
-test_command = "py -m pip install -r requirements.txt && py manage.py test"
+test_command = "pip install -r requirements.txt && python manage.py test"
 
 # Démarrer git bisect
 start_cmd = f"git bisect start {bad_commit} {good_commit}"
