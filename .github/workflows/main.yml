@@ -18,9 +18,9 @@ jobs:
     - name: Install packages
       # On installe les dépendances une première fois
       # pour que le script Python puisse s'exécuter.
-      run: py -m pip install -r requirements.txt 
+      run: pip install -r requirements.txt 
       
     - name: Run git bisect script
       # C'est la nouvelle étape !
       # Elle remplace l'ancienne étape "Run tests".
-      run: py myscript.py
+      run: python myscript.py
