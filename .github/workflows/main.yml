@@ -6,12 +6,21 @@ jobs:
     steps:
     - uses: actions/checkout@v3
       with:
-        fetch-depth: 0
+        # Indispensable pour git bisect ! 
+        # Il doit récupérer TOUT l'historique des commits.
+        fetch-depth: 0 
+        
     - name: Setup Python
       uses: actions/setup-python@v4
       with:
         python-version: "3.9"
+        
     - name: Install packages
-      run: pip install -r requirements.txt
-    - name: Run tests
-      run: python manage.py test
+      # On installe les dépendances une première fois
+      # pour que le script Python puisse s'exécuter.
+      run: py -m pip install -r requirements.txt 
+      
+    - name: Run git bisect script
+      # C'est la nouvelle étape !
+      # Elle remplace l'ancienne étape "Run tests".
+      run: py myscript.py
